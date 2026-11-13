@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#120f0b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>ديوان العصر العباسي | التراث الزاهر</title>
     <style>
         :root {
             --bg-primary: #120f0b;
-            --bg-secondary: #1e1812;
-            --bg-card: #282017;
+            --bg-secondary: rgba(30, 24, 18, 0.92);
+            --bg-card: rgba(40, 32, 23, 0.94);
             --accent-gold: #d4af37;
             --accent-gold-light: #f3e5ab;
             --text-main: #f4ebd0;
@@ -25,6 +28,14 @@
 
         body {
             background-color: var(--bg-primary);
+            /* خلفية بطابع تاريخي عباسي وصحراوي مع تظليل داكن للحفاظ على وضوح النصوص */
+            background-image: 
+                linear-gradient(rgba(18, 15, 11, 0.85), rgba(18, 15, 11, 0.90)),
+                url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1920&q=80'),
+                url('https://images.unsplash.com/photo-1542382257-80dedb725088?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
@@ -33,7 +44,7 @@
 
         /* رأس الصفحة الطرازي */
         header {
-            background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+            background: linear-gradient(to bottom, rgba(30, 24, 18, 0.96), rgba(18, 15, 11, 0.92));
             border-bottom: 2px solid var(--border-gold);
             padding: 25px 20px;
             text-align: center;
@@ -53,6 +64,29 @@
             font-size: 1.2rem;
         }
 
+        /* زر تثبيت التطبيق PWA */
+        #installAppBtn {
+            margin-top: 15px;
+            background: linear-gradient(135deg, #f3e5ab, var(--accent-gold));
+            color: #120f0b;
+            border: 1px solid var(--accent-gold-light);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #installAppBtn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+        }
+
         .container {
             max-width: 1000px;
             margin: 30px auto;
@@ -70,6 +104,7 @@
             max-width: 450px;
             margin: 50px auto;
             box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
         }
 
         .auth-box h2 {
@@ -92,7 +127,7 @@
         .form-group input {
             width: 100%;
             padding: 12px;
-            background-color: var(--bg-primary);
+            background-color: rgba(18, 15, 11, 0.9);
             border: 1px solid var(--border-gold);
             border-radius: 6px;
             color: var(--text-main);
@@ -129,6 +164,7 @@
             margin-bottom: 30px;
             flex-wrap: wrap;
             gap: 15px;
+            backdrop-filter: blur(6px);
         }
 
         .user-credentials {
@@ -147,6 +183,7 @@
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 40px;
+            backdrop-filter: blur(6px);
         }
 
         .publisher-section h3 {
@@ -159,12 +196,48 @@
             width: 100%;
             height: 100px;
             padding: 12px;
-            background-color: var(--bg-primary);
+            background-color: rgba(18, 15, 11, 0.9);
             border: 1px solid var(--border-gold);
             border-radius: 6px;
             color: var(--text-main);
             margin-bottom: 15px;
             resize: vertical;
+        }
+
+        /* تنسيق خانة رفع الصور */
+        .image-upload-box {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: rgba(18, 15, 11, 0.85);
+            border: 1px dashed var(--border-gold);
+            border-radius: 6px;
+        }
+
+        .image-upload-box label {
+            display: block;
+            color: var(--accent-gold-light);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        .image-upload-box input[type="file"] {
+            width: 100%;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        #imagePreviewContainer {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            border: 1px solid var(--border-gold);
+            object-fit: contain;
         }
 
         /* شبكة الشخصيات والتاريخ العباسي */
@@ -174,6 +247,7 @@
             border-bottom: 1px solid var(--border-gold);
             padding-bottom: 8px;
             margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .cards-grid {
@@ -234,23 +308,36 @@
             border: 1px dashed var(--border-gold);
             padding: 20px;
             border-radius: 8px;
+            backdrop-filter: blur(6px);
         }
 
         .post-item p {
             font-size: 1.1rem;
             line-height: 1.7;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .post-uploaded-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            display: block;
+            margin: 12px auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-gold);
+            object-fit: contain;
         }
 
         .post-author {
             color: var(--accent-gold);
             font-size: 0.95rem;
             text-align: left;
+            margin-top: 10px;
         }
 
         /* ذيل الصفحة المخصص */
         footer {
-            background-color: var(--bg-secondary);
+            background-color: rgba(30, 24, 18, 0.96);
             border-top: 2px solid var(--border-gold);
             text-align: center;
             padding: 20px;
@@ -274,6 +361,8 @@
     <header>
         <h1>ديوان العصر العباسي</h1>
         <p>نافذة على أزهى عصور المعرفة والحضارة الإسلامية</p>
+        <!-- زر تحميل الموقع كتطبيق -->
+        <button id="installAppBtn" class="hidden" onclick="installPWA()">📲 تحميل الديوان كتطبيق على جهازك</button>
     </header>
 
     <div class="container">
@@ -306,6 +395,16 @@
             <div class="publisher-section">
                 <h3>إضافة منشور أو مقال جديد في الديوان</h3>
                 <textarea id="postContentInput" placeholder="اكتب ما تحب أن تنشره في الموقع من فوائد أو أشعار أو إضاءات تاريخية..."></textarea>
+                
+                <!-- خانة رفع الصور بمختلف أحجامها -->
+                <div class="image-upload-box">
+                    <label for="postImageInput">🖼️ إرفاق صورة مع المنشور (يدعم جميع الأحجام والصيغ):</label>
+                    <input type="file" id="postImageInput" accept="image/*" onchange="previewSelectedImage(event)">
+                    <div id="imagePreviewContainer" class="hidden">
+                        <img id="imagePreview" src="" alt="معاينة الصورة">
+                    </div>
+                </div>
+
                 <button class="btn" onclick="publishNewContent()">نشر المحتوى فوراً</button>
             </div>
 
@@ -409,7 +508,118 @@
     </footer>
 
     <script>
-        // خوارزمية وحركات التشغيل والتخزين المحلي
+        // ==========================================
+        // 1. خوارزمية تحويل الموقع إلى تطبيق قابل للتثبيت (PWA)
+        // ==========================================
+        let deferredPrompt;
+
+        // إنشاء ملف Manifest ديناميكي ليتمكن المتصفح من تثبيت الموقع كتطبيق مستقل
+        const manifestData = {
+            name: "ديوان العصر العباسي",
+            short_name: "ديوان العباسي",
+            description: "نافذة على أزهى عصور المعرفة والحضارة الإسلامية",
+            start_url: window.location.href,
+            display: "standalone",
+            background_color: "#120f0b",
+            theme_color: "#d4af37",
+            icons: [
+                {
+                    src: "https://cdn-icons-png.flaticon.com/512/2232/2232688.png",
+                    sizes: "512x512",
+                    type: "image/png"
+                }
+            ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/manifest+json' });
+        const manifestURL = URL.createObjectURL(manifestBlob);
+        const linkEl = document.createElement('link');
+        linkEl.rel = 'manifest';
+        linkEl.href = manifestURL;
+        document.head.appendChild(linkEl);
+
+        // تسجيل Service Worker مدمج لتفعيل ميزة التثبيت
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                self.addEventListener('install', (e) => self.skipWaiting());
+                self.addEventListener('fetch', (e) => {});
+            `;
+            const swBlob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(swBlob);
+            navigator.serviceWorker.register(swUrl).catch(() => {});
+        }
+
+        // التقاط حدث جاهزية التثبيت وإظهار الزر للمستخدم
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installAppBtn').classList.remove('hidden');
+        });
+
+        async function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installAppBtn').classList.add('hidden');
+                }
+                deferredPrompt = null;
+            } else {
+                alert('لتثبيت الموقع كتطبيق: اضغط على قائمة المتصفح (⋮ أو زر المشاركة) ثم اختر "إضافة إلى الشاشة الرئيسية" أو "تثبيت التطبيق".');
+            }
+        }
+
+        // ==========================================
+        // 2. خوارزمية معالجة ورفع الصور بمختلف أحجامها
+        // ==========================================
+        let currentUploadedImageBase64 = null;
+
+        function previewSelectedImage(event) {
+            const file = event.target.files[0];
+            if (!file) {
+                currentUploadedImageBase64 = null;
+                document.getElementById('imagePreviewContainer').classList.add('hidden');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    // الحفاظ على الأبعاد الأصلية للصورة مع ضبط الجودة لضمان حفظها في المتصفح مهما كان حجمها كبيراً
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    // إذا كانت الصورة ضخمة جداً (أكبر من 1600 بكسل) نضبطها بذكاء مع الحفاظ على نسبة العرض والارتفاع
+                    const maxDim = 1600;
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    currentUploadedImageBase64 = canvas.toDataURL('image/jpeg', 0.85);
+                    document.getElementById('imagePreview').src = currentUploadedImageBase64;
+                    document.getElementById('imagePreviewContainer').classList.remove('hidden');
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // ==========================================
+        // 3. خوارزمية وحركات التشغيل والتخزين المحلي
+        // ==========================================
         function handleLogin() {
             const email = document.getElementById('emailInput').value.trim();
             const password = document.getElementById('passwordInput').value.trim();
@@ -419,7 +629,6 @@
                 return;
             }
 
-            // حفظ بيانات المستخدم وعرضها فوراً
             localStorage.setItem('abbid_user_email', email);
             localStorage.setItem('abbid_user_pass', password);
 
@@ -444,19 +653,31 @@
 
         function publishNewContent() {
             const content = document.getElementById('postContentInput').value.trim();
-            if (!content) {
-                alert('الرجاء كتابة نص النشر أولاً.');
+            if (!content && !currentUploadedImageBase64) {
+                alert('الرجاء كتابة نص النشر أو اختيار صورة أولاً.');
                 return;
             }
 
             let posts = JSON.parse(localStorage.getItem('abbid_posts') || '[]');
             posts.unshift({
                 text: content,
+                image: currentUploadedImageBase64,
                 date: new Date().toLocaleDateString('ar-DZ')
             });
 
-            localStorage.setItem('abbid_posts', JSON.stringify(posts));
+            try {
+                localStorage.setItem('abbid_posts', JSON.stringify(posts));
+            } catch (err) {
+                alert('مساحة التخزين ممتلئة بسبب حجم الصور الكبير، يرجى حذف بعض المنشورات القديمة.');
+                return;
+            }
+
+            // إعادة تعيين الحقول بعد النشر
             document.getElementById('postContentInput').value = '';
+            document.getElementById('postImageInput').value = '';
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+            currentUploadedImageBase64 = null;
+
             loadSavedPosts();
         }
 
@@ -469,7 +690,8 @@
                 container.classList.remove('hidden');
                 list.innerHTML = posts.map(p => `
                     <div class="post-item">
-                        <p>${p.text}</p>
+                        ${p.text ? `<p>${p.text}</p>` : ''}
+                        ${p.image ? `<img src="${p.image}" class="post-uploaded-img" alt="صورة مرفقة">` : ''}
                         <div class="post-author">تاريخ النشر: ${p.date} — نُشر بواسطة صاحب الموقع: <strong>عبد الله ميري</strong></div>
                     </div>
                 `).join('');
