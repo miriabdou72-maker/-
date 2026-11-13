@@ -8,9 +8,8 @@
     <style>
         body { 
             font-family: system-ui, -apple-system, sans-serif; 
-            /* الخلفية التاريخية الفخمة */
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), 
-                        url('https://firebasestorage.googleapis.com/v0/b/hhhhhhhhhhhhhhh-d35de.firebaseapp.com/o/images%2Fbg_abbasid.jpg?alt=media') no-repeat center center fixed;
+                        url('https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?q=80&w=1000&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: #f8fafc; 
         }
@@ -18,7 +17,6 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- الهيدر العلوي -->
     <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto max-w-3xl flex justify-between items-center">
             <div>
@@ -36,7 +34,6 @@
         </div>
     </header>
 
-    <!-- إعدادات المستخدم -->
     <div id="userSettingsPanel" class="hidden container mx-auto max-w-3xl px-4 mt-4">
         <div class="bg-slate-800/95 backdrop-blur p-4 rounded-xl border border-slate-700 shadow-xl text-sm">
             <h3 class="font-bold text-amber-400 mb-3">إعدادات العرض والتفضيلات</h3>
@@ -47,10 +44,8 @@
         </div>
     </div>
 
-    <!-- المحتوى الرئيسي -->
     <main class="container mx-auto p-4 max-w-3xl flex-grow">
         
-        <!-- زر فتح لوحة التحكم للأساتذة -->
         <div class="flex justify-between items-center mb-6 bg-slate-900/80 backdrop-blur p-3 rounded-lg border border-slate-800 shadow">
             <span class="text-xs text-slate-300">خاص بالأساتذة المعتمدين للنشر:</span>
             <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-1.5 rounded text-xs transition">
@@ -58,11 +53,9 @@
             </button>
         </div>
 
-        <!-- لوحة التحكم المحمية بكلمة السر (مخفية عن الزوار ودون ذكرها في الواجهة) -->
         <div id="adminPanel" class="hidden bg-slate-900/95 backdrop-blur p-4 rounded-xl border border-amber-500/50 mb-6 shadow-xl">
             <h2 class="text-lg font-bold text-amber-400 mb-3">لوحة نشر الأساتذة</h2>
             
-            <!-- تبويب إدخال كلمة السر -->
             <div id="loginSection">
                 <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية للمتابعة:</p>
                 <div class="flex gap-2">
@@ -72,7 +65,6 @@
                 <p id="loginError" class="text-red-400 text-xs mt-2 hidden">الكود غير صحيح!</p>
             </div>
 
-            <!-- نموذج النشر المباشر (يظهر حصرياً بعد إدخال كلمة السر الصحيحة) -->
             <div id="publishForm" class="hidden space-y-3 mt-3">
                 <input type="text" id="postTitle" placeholder="عنوان المقال أو الموضوع..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
                 <textarea id="postContent" rows="3" placeholder="اكتب المحتوى التاريخي هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white"></textarea>
@@ -86,7 +78,6 @@
             </div>
         </div>
 
-        <!-- قسم عرض المنشورات -->
         <section>
             <h2 class="text-xl font-bold mb-4 border-b border-slate-800 pb-2 text-amber-400">أحدث المنشورات التاريخية</h2>
             <div id="postsContainer" class="space-y-4">
@@ -94,7 +85,6 @@
             </div>
         </section>
 
-        <!-- تحميل التطبيق -->
         <div id="downloadSection" class="mt-12 bg-slate-900/90 backdrop-blur p-6 rounded-xl border border-slate-800 text-center shadow-xl">
             <h3 class="text-lg font-bold text-amber-400 mb-2">تحميل تطبيق منصة العصر العباسي</h3>
             <p class="text-xs text-slate-300 mb-4">استمتع بتجربة تصفح أسرع وأقوى عبر تطبيق الهاتف الرسمي الخاص بالموقع.</p>
@@ -104,15 +94,13 @@
         </div>
     </main>
 
-    <!-- الفوتر -->
     <footer class="bg-slate-900/90 backdrop-blur border-t border-slate-800 text-center p-4 text-xs text-slate-500 mt-8">
         جميع الحقوق محفوظة &copy; 2026 - منصة العصر العباسي
     </footer>
 
-    <!-- سكربتات Firebase والتحقق من كلمة السر البرمجية -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyD6mSK3BYoyicmQMsImx6bxs8ieWM_3dUM",
@@ -140,7 +128,6 @@
             container.style.fontSize = document.getElementById('fontSizeToggle').checked ? "1.1rem" : "1rem";
         }
 
-        // التحقق من كلمة السر برمجياً (مخفية تماماً عن واجهة المستخدم)
         window.verifyCode = function() {
             const code = document.getElementById('adminCode').value;
             const errorMsg = document.getElementById('loginError');
@@ -153,7 +140,6 @@
             }
         }
 
-        // دالة النشر المباشر مع اختيار الصورة من استوديو الهاتف
         window.publishPost = async function() {
             const title = document.getElementById('postTitle').value.trim();
             const content = document.getElementById('postContent').value.trim();
@@ -184,7 +170,7 @@
                     title: title,
                     content: content,
                     imageUrl: imageData,
-                    createdAt: new Date()
+                    createdAt: serverTimestamp()
                 });
 
                 document.getElementById('postTitle').value = '';
@@ -194,7 +180,7 @@
                 document.getElementById('adminPanel').classList.add('hidden');
             } catch (e) {
                 console.error("خطأ أثناء النشر: ", e);
-                alert("حدث خطأ أثناء النشر. تأكد من اتصالك بالإنترنت.");
+                alert("حدث خطأ أثناء الاتصال بقاعدة البيانات. تأكد من أنك أنشأت قاعدة بيانات Firestore ونظامها في وضع التجربة Test Mode.");
             } finally {
                 publishBtn.innerText = "نشر فوراً للجميع";
                 publishBtn.disabled = false;
