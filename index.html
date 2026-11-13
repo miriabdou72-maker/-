@@ -4,52 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منصة العصر العباسي التفاعلية</title>
-    <!-- Tailwind CSS للتصميم السريع والأنيق -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #f8fafc; }
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), 
+                        url('https://firebasestorage.googleapis.com/v0/b/hhhhhhhhhhhhhhh-d35de.firebaseapp.com/o/images%2Fbg_abbasid.jpg?alt=media') no-repeat center center fixed;
+            background-size: cover;
+            color: #f8fafc; 
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- الهيدر -->
-    <header class="bg-slate-900 border-b border-slate-800 p-4 text-center shadow-md">
-        <h1 class="text-2xl font-bold text-amber-400">منصة العصر العباسي</h1>
-        <p class="text-sm text-slate-400 mt-1">منصة إلكترونية تفاعلية لنشر الأبحاث والمقالات التاريخية</p>
+    <!-- الهيدر العلوي مع أزرار الإعدادات والتحميل -->
+    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 p-4 shadow-md sticky top-0 z-50">
+        <div class="container mx-auto max-w-3xl flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-amber-400">منصة العصر العباسي</h1>
+                <p class="text-xs text-slate-400">بوابة الأبحاث التاريخية التفاعلية</p>
+            </div>
+            <div class="flex gap-2">
+                <!-- زر تحميل التطبيق -->
+                <a href="#downloadSection" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded text-xs transition flex items-center gap-1">
+                    📥 تحميل التطبيق
+                </a>
+                <!-- زر إعدادات المستخدم -->
+                <button onclick="toggleUserSettings()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 px-3 py-1.5 rounded text-xs transition">
+                    ⚙️ إعدادات
+                </button>
+            </div>
+        </div>
     </header>
+
+    <!-- قائمة إعدادات المستخدم الإضافية (لا توفر وصولاً للإدارة) -->
+    <div id="userSettingsPanel" class="hidden container mx-auto max-w-3xl px-4 mt-4">
+        <div class="bg-slate-800/95 backdrop-blur p-4 rounded-xl border border-slate-700 shadow-xl text-sm">
+            <h3 class="font-bold text-amber-400 mb-3">إعدادات العرض والتفضيلات</h3>
+            <div class="space-y-3">
+                <label class="flex items-center justify-between cursor-pointer">
+                    <span class="text-slate-300">تكبير خط النصوص لتسهيل القراءة</span>
+                    <input type="checkbox" id="fontSizeToggle" onchange="toggleFontSize()" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
+                </label>
+                <label class="flex items-center justify-between cursor-pointer">
+                    <span class="text-slate-300">إظهار أحدث المنشورات أولاً</span>
+                    <input type="checkbox" checked disabled class="rounded bg-slate-900 border-slate-700 text-amber-500">
+                </label>
+            </div>
+        </div>
+    </div>
 
     <!-- المحتوى الرئيسي -->
     <main class="container mx-auto p-4 max-w-3xl flex-grow">
         
-        <!-- زر الدخول للوحة التحكم -->
-        <div class="flex justify-between items-center mb-6 bg-slate-800 p-3 rounded-lg border border-slate-700">
-            <span class="text-sm text-slate-300">هل أنت أستاذ معتمد؟</span>
-            <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-1.5 rounded text-sm transition">
+        <!-- زر الدخول للوحة التحكم للأساتذة -->
+        <div class="flex justify-between items-center mb-6 bg-slate-900/80 backdrop-blur p-3 rounded-lg border border-slate-800 shadow">
+            <span class="text-xs text-slate-300">خاص بالأساتذة المعتمدين للنشر:</span>
+            <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-1.5 rounded text-xs transition">
                 بوابة الأساتذة
             </button>
         </div>
 
-        <!-- لوحة التحكم المحمية بكود السري -->
-        <div id="adminPanel" class="hidden bg-slate-800 p-4 rounded-xl border border-amber-500/50 mb-6 shadow-xl">
+        <!-- لوحة التحكم المحمية بالكود الجديد PROOF2026 -->
+        <div id="adminPanel" class="hidden bg-slate-900/95 backdrop-blur p-4 rounded-xl border border-amber-500/50 mb-6 shadow-xl">
             <h2 class="text-lg font-bold text-amber-400 mb-3">لوحة نشر الأساتذة</h2>
             <div id="loginSection">
-                <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية الخاص بالأساتذة للنشر:</p>
+                <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية (PROOF2026):</p>
                 <div class="flex gap-2">
-                    <input type="password" id="adminCode" placeholder="كود الصلاحية..." class="bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                    <input type="password" id="adminCode" placeholder="أدخل الكود هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
                     <button onclick="verifyCode()" class="bg-slate-700 hover:bg-slate-600 px-4 py-1.5 rounded text-sm text-white">دخول</button>
                 </div>
                 <p id="loginError" class="text-red-400 text-xs mt-2 hidden">الكود غير صحيح!</p>
             </div>
 
-            <!-- نموذج النشر (يظهر بعد نجاح تسجيل الدخول) -->
+            <!-- نموذج النشر ورفع الصور -->
             <div id="publishForm" class="hidden space-y-3 mt-3">
-                <input type="text" id="postTitle" placeholder="عنوان المقال أو الموضوع..." class="bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
-                <textarea id="postContent" rows="3" placeholder="اكتب المحتوى هنا..." class="bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white"></textarea>
+                <input type="text" id="postTitle" placeholder="عنوان المقال أو الموضوع..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                <textarea id="postContent" rows="3" placeholder="اكتب المحتوى التاريخي هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white"></textarea>
+                
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">رابط الصورة (اختياري):</label>
-                    <input type="url" id="postImage" placeholder="https://example.com/image.jpg" class="bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                    <label class="block text-xs text-slate-400 mb-1">اختر صورة من هاتفك (اختياري):</label>
+                    <input type="file" id="postImageFile" accept="image/*" class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full text-slate-300 file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-600">
                 </div>
-                <button onclick="publishPost()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 rounded text-sm transition">نشر فوراً للجميع</button>
+
+                <button onclick="publishPost()" id="publishBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 rounded text-sm transition">نشر فوراً للجميع</button>
             </div>
         </div>
 
@@ -57,22 +95,31 @@
         <section>
             <h2 class="text-xl font-bold mb-4 border-b border-slate-800 pb-2 text-amber-400">أحدث المنشورات التاريخية</h2>
             <div id="postsContainer" class="space-y-4">
-                <p class="text-slate-500 text-center py-6">جاري تحميل المنشورات من السحاب...</p>
+                <p class="text-slate-400 text-center py-6 bg-slate-900/60 rounded-xl">جاري تحميل المنشورات من السحاب...</p>
             </div>
         </section>
+
+        <!-- قسم تحميل التطبيق -->
+        <div id="downloadSection" class="mt-12 bg-slate-900/90 backdrop-blur p-6 rounded-xl border border-slate-800 text-center shadow-xl">
+            <h3 class="text-lg font-bold text-amber-400 mb-2">تحميل تطبيق منصة العصر العباسي</h3>
+            <p class="text-xs text-slate-300 mb-4">استمتع بتجربة تصفح أسرع وأقوى عبر تطبيق الهاتف الرسمي الخاص بالموقع.</p>
+            <button onclick="alert('جارٍ تجهيز ملف التطبيق للتحميل قريباً!')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition shadow-lg">
+                تحميل التطبيق الآن (APK)
+            </button>
+        </div>
     </main>
 
     <!-- الفوتر -->
-    <footer class="bg-slate-900 border-t border-slate-800 text-center p-4 text-xs text-slate-500">
+    <footer class="bg-slate-900/90 backdrop-blur border-t border-slate-800 text-center p-4 text-xs text-slate-500 mt-8">
         جميع الحقوق محفوظة &copy; 2026 - منصة العصر العباسي
     </footer>
 
-    <!-- سكربتات Firebase وربط قاعدة البيانات -->
+    <!-- سكربتات Firebase والتحكم بالتفضيلات -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
-        // إعدادات Firebase الخاصة بك
         const firebaseConfig = {
           apiKey: "AIzaSyD6mSK3BYoyicmQMsImx6bxs8ieWM_3dUM",
           authDomain: "hhhhhhhhhhhhhhh-d35de.firebaseapp.com",
@@ -83,21 +130,35 @@
           measurementId: "G-V0T1CFDLQP"
         };
 
-        // تهيئة Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const storage = getStorage(app);
 
-        // فتح وإغلاق لوحة التحكم
+        // إظهار وإخفاء لوحة الإدارة
         window.toggleAdminPanel = function() {
-            const panel = document.getElementById('adminPanel');
-            panel.classList.toggle('hidden');
+            document.getElementById('adminPanel').classList.toggle('hidden');
         }
 
-        // التحقق من كود الأستاذ
+        // إظهار وإخفاء إعدادات المستخدم العادية
+        window.toggleUserSettings = function() {
+            document.getElementById('userSettingsPanel').classList.toggle('hidden');
+        }
+
+        // تغيير حجم الخط كإعداد إضافي للمستخدم
+        window.toggleFontSize = function() {
+            const container = document.getElementById('postsContainer');
+            if (document.getElementById('fontSizeToggle').checked) {
+                container.style.fontSize = "1.1rem";
+            } else {
+                container.style.fontSize = "1rem";
+            }
+        }
+
+        // التحقق من كود الأستاذ الجديد PROOF2026
         window.verifyCode = function() {
             const code = document.getElementById('adminCode').value;
             const errorMsg = document.getElementById('loginError');
-            if (code === "abbasid2026") {
+            if (code === "PROOF2026") {
                 document.getElementById('loginSection').classList.add('hidden');
                 document.getElementById('publishForm').classList.remove('hidden');
                 errorMsg.classList.add('hidden');
@@ -106,18 +167,29 @@
             }
         }
 
-        // نشر مقال أو صورة جديدة وحفظها في قاعدة بيانات Firebase السحابية
+        // رفع المقال والصورة للسحاب
         window.publishPost = async function() {
             const title = document.getElementById('postTitle').value.trim();
             const content = document.getElementById('postContent').value.trim();
-            const imageUrl = document.getElementById('postImage').value.trim();
+            const imageFile = document.getElementById('postImageFile').files[0];
+            const publishBtn = document.getElementById('publishBtn');
 
             if (!title || !content) {
                 alert("الرجاء إدخال العنوان والمحتوى على الأقل!");
                 return;
             }
 
+            publishBtn.innerText = "جاري رفع الصورة والنشر...";
+            publishBtn.disabled = true;
+
             try {
+                let imageUrl = "";
+                if (imageFile) {
+                    const storageRef = ref(storage, 'images/' + Date.now() + '_' + imageFile.name);
+                    const snapshot = await uploadBytes(storageRef, imageFile);
+                    imageUrl = await getDownloadURL(snapshot.ref);
+                }
+
                 await addDoc(collection(db, "posts"), {
                     title: title,
                     content: content,
@@ -125,46 +197,47 @@
                     createdAt: new Date()
                 });
 
-                // تفريغ الحقول بعد النشر الناجح
                 document.getElementById('postTitle').value = '';
                 document.getElementById('postContent').value = '';
-                document.getElementById('postImage').value = '';
-                alert("تم النشر بنجاح وأصبح مرئياً لجميع الزوار على الفور!");
+                document.getElementById('postImageFile').value = '';
+                alert("تم النشر بنجاح وأصبحت الصورة والمنشور مرئيين للجميع لحظياً!");
                 document.getElementById('adminPanel').classList.add('hidden');
             } catch (e) {
                 console.error("خطأ أثناء النشر: ", e);
-                alert("حدث خطأ أثناء الاتصال بقاعدة البيانات.");
+                alert("حدث خطأ أثناء الرفع أو الاتصال بقاعدة البيانات.");
+            } finally {
+                publishBtn.innerText = "نشر فوراً للجميع";
+                publishBtn.disabled = false;
             }
         }
 
-        // جلب وعرض المنشورات لحظياً (Real-time listener) لكل الزوار
+        // جلب المنشورات وعرضها لحظياً
         const q = query(collection(db, "posts"));
         onSnapshot(q, (snapshot) => {
             const container = document.getElementById('postsContainer');
             container.innerHTML = '';
 
             if (snapshot.empty) {
-                container.innerHTML = '<p class="text-slate-500 text-center py-6">لا توجد منشورات حتى الآن. كن أول من ينشر!</p>';
+                container.innerHTML = '<p class="text-slate-400 text-center py-6 bg-slate-900/60 rounded-xl">لا توجد منشورات حتى الآن. كن أول من ينشر!</p>';
                 return;
             }
 
             snapshot.forEach((doc) => {
                 const post = doc.data();
                 const postCard = document.createElement('div');
-                postCard.className = "bg-slate-800 border border-slate-700 rounded-xl p-4 shadow-md";
+                postCard.className = "bg-slate-900/90 backdrop-blur border border-slate-800 rounded-xl p-4 shadow-md";
                 
                 let imageHtml = post.imageUrl ? `<img src="${post.imageUrl}" alt="صورة المنشور" class="mt-3 rounded-lg max-h-60 w-full object-cover">` : '';
 
                 postCard.innerHTML = `
                     <h3 class="text-lg font-bold text-amber-300 mb-2">${escapeHtml(post.title)}</h3>
-                    <p class="text-slate-300 text-sm whitespace-pre-line leading-relaxed">${escapeHtml(post.content)}</p>
+                    <p class="text-slate-200 text-sm whitespace-pre-line leading-relaxed">${escapeHtml(post.content)}</p>
                     ${imageHtml}
                 `;
                 container.appendChild(postCard);
             });
         });
 
-        // دالة أمان بسيطة لمنع حقن النصوص
         function escapeHtml(text) {
             const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
