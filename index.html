@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة العصر العباسي التفاعلية</title>
+    <title>منصة العصر العباسي التفاعلية والشاملة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { 
             font-family: system-ui, -apple-system, sans-serif; 
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), 
-                        url('https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?q=80&w=1000&auto=format&fit=crop') no-repeat center center fixed;
+            background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?q=80&w=1200&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             color: #f8fafc; 
         }
@@ -17,90 +17,124 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 p-4 shadow-md sticky top-0 z-50">
-        <div class="container mx-auto max-w-3xl flex justify-between items-center">
+    <!-- الهيدر العلوي الاحترافي -->
+    <header class="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 p-4 shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto max-w-4xl flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-bold text-amber-400">منصة العصر العباسي</h1>
-                <p class="text-xs text-slate-400">بوابة الأبحاث التاريخية التفاعلية</p>
+                <p class="text-xs text-slate-400">بوابة الأبحاث التاريخية والتثقيفية المتقدمة</p>
             </div>
             <div class="flex gap-2">
-                <a href="#downloadSection" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded text-xs transition flex items-center gap-1">
+                <a href="#downloadSection" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1 shadow">
                     📥 تحميل التطبيق
                 </a>
-                <button onclick="toggleUserSettings()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 px-3 py-1.5 rounded text-xs transition">
-                    ⚙️ إعدادات
+                <button onclick="toggleUserSettings()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 px-3 py-1.5 rounded-lg text-xs transition shadow">
+                    ⚙️ إعدادات العرض
                 </button>
             </div>
         </div>
     </header>
 
-    <div id="userSettingsPanel" class="hidden container mx-auto max-w-3xl px-4 mt-4">
-        <div class="bg-slate-800/95 backdrop-blur p-4 rounded-xl border border-slate-700 shadow-xl text-sm">
-            <h3 class="font-bold text-amber-400 mb-3">إعدادات العرض والتفضيلات</h3>
+    <!-- إعدادات المستخدم المتقدمة -->
+    <div id="userSettingsPanel" class="hidden container mx-auto max-w-4xl px-4 mt-4">
+        <div class="bg-slate-800/95 backdrop-blur p-4 rounded-xl border border-slate-700 shadow-2xl text-sm space-y-3">
+            <h3 class="font-bold text-amber-400 border-b border-slate-700 pb-2">لوحة تفضيلات القراءة</h3>
             <label class="flex items-center justify-between cursor-pointer">
-                <span class="text-slate-300">تكبير خط النصوص لتسهيل القراءة</span>
-                <input type="checkbox" id="fontSizeToggle" onchange="toggleFontSize()" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
+                <span class="text-slate-300">تفعيل الخط الكبير لتسهيل القراءة الممتدة</span>
+                <input type="checkbox" id="fontSizeToggle" onchange="toggleFontSize()" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0 w-4 h-4">
             </label>
         </div>
     </div>
 
-    <main class="container mx-auto p-4 max-w-3xl flex-grow">
+    <!-- المحتوى الرئيسي للمنصة -->
+    <main class="container mx-auto p-4 max-w-4xl flex-grow space-y-6">
         
-        <div class="flex justify-between items-center mb-6 bg-slate-900/80 backdrop-blur p-3 rounded-lg border border-slate-800 shadow">
-            <span class="text-xs text-slate-300">خاص بالأساتذة المعتمدين للنشر:</span>
-            <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-1.5 rounded text-xs transition">
-                بوابة الأساتذة
+        <!-- قسم ترحيب وتوضيح تفصيلي -->
+        <section class="bg-slate-900/80 backdrop-blur p-5 rounded-2xl border border-slate-800 shadow-lg text-center space-y-2">
+            <h2 class="text-xl font-bold text-amber-300">مرحباً بكم في صرح المعرفة العباسية</h2>
+            <p class="text-xs text-slate-300 leading-relaxed max-w-2xl mx-auto">
+                منصة تفاعلية متكاملة لتوثيق ونشر الدراسات التاريخية، والبحوث الأكاديمية، وإبراز إنجازات العصر الذهبي للإسلام في العلوم والفلك والأدب.
+            </p>
+        </section>
+
+        <!-- بوابة الأساتذة والتحكم -->
+        <div class="flex justify-between items-center bg-slate-900/90 backdrop-blur p-3.5 rounded-xl border border-slate-800 shadow">
+            <span class="text-xs text-slate-300 font-medium">لوحة تحكم المشرفين والأساتذة المعتمدين:</span>
+            <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs transition shadow">
+                فتح بوابة النشر
             </button>
         </div>
 
-        <div id="adminPanel" class="hidden bg-slate-900/95 backdrop-blur p-4 rounded-xl border border-amber-500/50 mb-6 shadow-xl">
-            <h2 class="text-lg font-bold text-amber-400 mb-3">لوحة نشر الأساتذة</h2>
+        <!-- لوحة التحكم المحمية بالكلمة السرية -->
+        <div id="adminPanel" class="hidden bg-slate-900/95 backdrop-blur p-5 rounded-2xl border border-amber-500/60 shadow-2xl space-y-4">
+            <h3 class="text-base font-bold text-amber-400">إدارة النشر والمحتوى التاريخي</h3>
             
-            <div id="loginSection">
-                <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية للمتابعة:</p>
+            <!-- نموذج التحقق من الكود -->
+            <div id="loginSection" class="space-y-2">
+                <p class="text-xs text-slate-400">يرجى إدخال كود المصادقة المعتمد للوصول إلى أدوات النشر:</p>
                 <div class="flex gap-2">
-                    <input type="password" id="adminCode" placeholder="أدخل كود المرور..." class="bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
-                    <button onclick="verifyCode()" class="bg-slate-700 hover:bg-slate-600 px-4 py-1.5 rounded text-sm text-white">دخول</button>
+                    <input type="password" id="adminCode" placeholder="أدخل كود الصلاحية..." class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                    <button onclick="verifyCode()" class="bg-slate-700 hover:bg-slate-600 px-5 py-2 rounded-lg text-sm text-white font-medium transition">تحقق</button>
                 </div>
-                <p id="loginError" class="text-red-400 text-xs mt-2 hidden">الكود غير صحيح!</p>
+                <p id="loginError" class="text-red-400 text-xs hidden font-medium">كود المصادقة غير صحيح! يرجى المحاولة مجدداً.</p>
             </div>
 
-            <div id="publishForm" class="hidden space-y-3 mt-3">
-                <input type="text" id="postTitle" placeholder="عنوان المقال أو الموضوع..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
-                <textarea id="postContent" rows="3" placeholder="اكتب المحتوى التاريخي هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white"></textarea>
+            <!-- نموذج النشر المتقدم (يعمل بعد التحقق) -->
+            <div id="publishForm" class="hidden space-y-3.5 pt-2 border-t border-slate-800">
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">عنوان المقال أو البحث التاريخي:</label>
+                    <input type="text" id="postTitle" placeholder="مثال: بيت الحكمة ودور الخوارزمي..." class="bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                </div>
                 
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">اختر صورة من استوديو الهاتف:</label>
-                    <input type="file" id="postImageFile" accept="image/*" class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full text-slate-300 file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-600">
+                    <label class="block text-xs text-slate-400 mb-1">المحتوى المفصل:</label>
+                    <textarea id="postContent" rows="4" placeholder="اكتب أو الصق تفاصيل البحث هنا..." class="bg-slate-950 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white leading-relaxed"></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-xs text-slate-400 mb-1">إرفاق صورة توضيحية من استوديو الهاتف (اختياري):</label>
+                    <input type="file" id="postImageFile" accept="image/*" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm w-full text-slate-300 file:mr-4 file:py-1.5 file:px-3.5 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-600 cursor-pointer">
                 </div>
 
-                <button onclick="publishPost()" id="publishBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 rounded text-sm transition">نشر فوراً للجميع</button>
+                <button onclick="publishPost()" id="publishBtn" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2.5 rounded-lg text-sm transition shadow-lg">نشر المقال فوراً للجميع</button>
             </div>
         </div>
 
-        <section>
-            <h2 class="text-xl font-bold mb-4 border-b border-slate-800 pb-2 text-amber-400">أحدث المنشورات التاريخية</h2>
+        <!-- قسم عرض المنشورات التاريخية -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <h2 class="text-lg font-bold text-amber-400">أحدث المنشورات والأبحاث التاريخية</h2>
+                <span id="postsCount" class="text-xs text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-800">جاري التحديث...</span>
+            </div>
             <div id="postsContainer" class="space-y-4">
-                <p class="text-slate-400 text-center py-6 bg-slate-900/60 rounded-xl">جاري تحميل المنشورات من السحاب...</p>
+                <div class="bg-slate-900/60 backdrop-blur p-8 rounded-2xl text-center border border-slate-800 space-y-2">
+                    <p class="text-slate-400 text-sm">جاري جلب الأبحاث والمنشورات من السحاب اللحظي...</p>
+                </div>
             </div>
         </section>
 
-        <div id="downloadSection" class="mt-12 bg-slate-900/90 backdrop-blur p-6 rounded-xl border border-slate-800 text-center shadow-xl">
-            <h3 class="text-lg font-bold text-amber-400 mb-2">تحميل تطبيق منصة العصر العباسي</h3>
-            <p class="text-xs text-slate-300 mb-4">استمتع بتجربة تصفح أسرع وأقوى عبر تطبيق الهاتف الرسمي الخاص بالموقع.</p>
-            <button onclick="alert('جارٍ تجهيز ملف التطبيق للتحميل قريباً!')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition shadow-lg">
-                تحميل التطبيق الآن (APK)
+        <!-- قسم تحميل التطبيق -->
+        <section id="downloadSection" class="bg-slate-900/90 backdrop-blur p-6 rounded-2xl border border-slate-800 text-center shadow-xl space-y-3">
+            <h3 class="text-lg font-bold text-amber-400">تطبيق منصة العصر العباسي للهواتف الذكية</h3>
+            <p class="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+                استمتع بتجربة قراءة مخصصة، إشعارات فورية عند نشر مقالات جديدة، وسرعة فائقة في التصفح عبر تطبيقنا الرسمي.
+            </p>
+            <button onclick="alert('جارٍ تجهيز ملف التطبيق النهائي للتحميل بصيغة APK قريباً جداً!')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl text-sm transition shadow-lg inline-flex items-center gap-2">
+                📥 تحميل التطبيق الآن (APK)
             </button>
-        </div>
+        </section>
     </main>
 
-    <footer class="bg-slate-900/90 backdrop-blur border-t border-slate-800 text-center p-4 text-xs text-slate-500 mt-8">
-        جميع الحقوق محفوظة &copy; 2026 - منصة العصر العباسي
+    <!-- الفوتر الرسمي -->
+    <footer class="bg-slate-900/95 backdrop-blur border-t border-slate-800 text-center p-4 text-xs text-slate-500 mt-12 space-y-1">
+        <p>منصة العصر العباسي التفاعلية - إشراف أكاديمي وبحثي</p>
+        <p>جميع الحقوق محفوظة &copy; 2026</p>
     </footer>
 
+    <!-- سكربتات التشغيل والربط السحابي المتكامل -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyD6mSK3BYoyicmQMsImx6bxs8ieWM_3dUM",
@@ -116,7 +150,9 @@
         const db = getFirestore(app);
 
         window.toggleAdminPanel = function() {
-            document.getElementById('adminPanel').classList.toggle('hidden');
+            const panel = document.getElementById('adminPanel');
+            panel.classList.toggle('hidden');
+            panel.scrollIntoView({ behavior: 'smooth' });
         }
 
         window.toggleUserSettings = function() {
@@ -125,11 +161,12 @@
 
         window.toggleFontSize = function() {
             const container = document.getElementById('postsContainer');
-            container.style.fontSize = document.getElementById('fontSizeToggle').checked ? "1.1rem" : "1rem";
+            const isChecked = document.getElementById('fontSizeToggle').checked;
+            container.style.fontSize = isChecked ? "1.15rem" : "1rem";
         }
 
         window.verifyCode = function() {
-            const code = document.getElementById('adminCode').value;
+            const code = document.getElementById('adminCode').value.trim();
             const errorMsg = document.getElementById('loginError');
             if (code === "PROOF2026") {
                 document.getElementById('loginSection').classList.add('hidden');
@@ -147,11 +184,11 @@
             const publishBtn = document.getElementById('publishBtn');
 
             if (!title || !content) {
-                alert("الرجاء إدخال العنوان والمحتوى على الأقل!");
+                alert("الرجاء إدخال العنوان والمحتوى التفصيلي للمقال على الأقل!");
                 return;
             }
 
-            publishBtn.innerText = "جاري النشر...";
+            publishBtn.innerText = "جاري المعالجة والنشر السحابي...";
             publishBtn.disabled = true;
 
             try {
@@ -176,44 +213,62 @@
                 document.getElementById('postTitle').value = '';
                 document.getElementById('postContent').value = '';
                 document.getElementById('postImageFile').value = '';
-                alert("تم النشر بنجاح وأصبحت الصورة والمنشور مرئيين للجميع لحظياً!");
+                alert("تم نشر المقال والصورة بنجاح وأصبح متاحاً للجميع لحظياً!");
                 document.getElementById('adminPanel').classList.add('hidden');
             } catch (e) {
-                console.error("خطأ أثناء النشر: ", e);
-                alert("حدث خطأ أثناء الاتصال بقاعدة البيانات. تأكد من أنك أنشأت قاعدة بيانات Firestore ونظامها في وضع التجربة Test Mode.");
+                console.error("خطأ أثناء النشر:", e);
+                alert("تعذر النشر. يجدر التأكد من تفعيل قواعد البيانات (Firestore Rules) في لوحة تحكم Firebase وتعيينها على وضع السماح بالقراءة والكتابة.");
             } finally {
-                publishBtn.innerText = "نشر فوراً للجميع";
+                publishBtn.innerText = "نشر المقال فوراً للجميع";
                 publishBtn.disabled = false;
             }
         }
 
-        const q = query(collection(db, "posts"));
+        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
         onSnapshot(q, (snapshot) => {
             const container = document.getElementById('postsContainer');
+            const countBadge = document.getElementById('postsCount');
             container.innerHTML = '';
+            countBadge.innerText = `${snapshot.size} مقال منشور`;
 
             if (snapshot.empty) {
-                container.innerHTML = '<p class="text-slate-400 text-center py-6 bg-slate-900/60 rounded-xl">لا توجد منشورات حتى الآن. كن أول من ينشر!</p>';
+                container.innerHTML = `
+                    <div class="bg-slate-900/60 backdrop-blur p-8 rounded-2xl text-center border border-slate-800 space-y-2">
+                        <p class="text-slate-400 text-sm">لا توجد منشورات تاريخية حتى الآن. كن أول من ينشر عبر بوابة الأساتذة!</p>
+                    </div>
+                `;
                 return;
             }
 
             snapshot.forEach((doc) => {
                 const post = doc.data();
                 const postCard = document.createElement('div');
-                postCard.className = "bg-slate-900/90 backdrop-blur border border-slate-800 rounded-xl p-4 shadow-md";
+                postCard.className = "bg-slate-900/90 backdrop-blur border border-slate-800 rounded-2xl p-5 shadow-xl space-y-3";
                 
-                let imageHtml = post.imageUrl ? `<img src="${post.imageUrl}" alt="صورة المنشور" class="mt-3 rounded-lg max-h-60 w-full object-cover">` : '';
+                let imageHtml = post.imageUrl ? `
+                    <div class="mt-3 overflow-hidden rounded-xl border border-slate-800">
+                        <img src="${post.imageUrl}" alt="صورة توضيحية للمقال" class="w-full max-h-80 object-cover hover:scale-105 transition duration-300">
+                    </div>
+                ` : '';
 
                 postCard.innerHTML = `
-                    <h3 class="text-lg font-bold text-amber-300 mb-2">${escapeHtml(post.title)}</h3>
+                    <h3 class="text-lg font-bold text-amber-300">${escapeHtml(post.title)}</h3>
                     <p class="text-slate-200 text-sm whitespace-pre-line leading-relaxed">${escapeHtml(post.content)}</p>
                     ${imageHtml}
                 `;
                 container.appendChild(postCard);
             });
+        }, (error) => {
+            console.error("خطأ في المراقبة اللحظية:", error);
+            document.getElementById('postsContainer').innerHTML = `
+                <div class="bg-red-950/40 border border-red-900/50 p-4 rounded-xl text-center text-red-300 text-xs">
+                    حدث خطأ في مزامنة البيانات. يجدر مراجعة قواعد الأمان (Firestore Rules) في حساب Firebase والتأكد من تفعيلها.
+                </div>
+            `;
         });
 
         function escapeHtml(text) {
+            if (!text) return '';
             const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
