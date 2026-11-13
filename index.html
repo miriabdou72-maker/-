@@ -8,6 +8,7 @@
     <style>
         body { 
             font-family: system-ui, -apple-system, sans-serif; 
+            /* الخلفية التاريخية الفخمة */
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.92)), 
                         url('https://firebasestorage.googleapis.com/v0/b/hhhhhhhhhhhhhhh-d35de.firebaseapp.com/o/images%2Fbg_abbasid.jpg?alt=media') no-repeat center center fixed;
             background-size: cover;
@@ -17,7 +18,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-    <!-- الهيدر العلوي مع أزرار الإعدادات والتحميل -->
+    <!-- الهيدر العلوي -->
     <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto max-w-3xl flex justify-between items-center">
             <div>
@@ -25,11 +26,9 @@
                 <p class="text-xs text-slate-400">بوابة الأبحاث التاريخية التفاعلية</p>
             </div>
             <div class="flex gap-2">
-                <!-- زر تحميل التطبيق -->
                 <a href="#downloadSection" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-1.5 rounded text-xs transition flex items-center gap-1">
                     📥 تحميل التطبيق
                 </a>
-                <!-- زر إعدادات المستخدم -->
                 <button onclick="toggleUserSettings()" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-amber-400 px-3 py-1.5 rounded text-xs transition">
                     ⚙️ إعدادات
                 </button>
@@ -37,27 +36,21 @@
         </div>
     </header>
 
-    <!-- قائمة إعدادات المستخدم الإضافية (لا توفر وصولاً للإدارة) -->
+    <!-- إعدادات المستخدم -->
     <div id="userSettingsPanel" class="hidden container mx-auto max-w-3xl px-4 mt-4">
         <div class="bg-slate-800/95 backdrop-blur p-4 rounded-xl border border-slate-700 shadow-xl text-sm">
             <h3 class="font-bold text-amber-400 mb-3">إعدادات العرض والتفضيلات</h3>
-            <div class="space-y-3">
-                <label class="flex items-center justify-between cursor-pointer">
-                    <span class="text-slate-300">تكبير خط النصوص لتسهيل القراءة</span>
-                    <input type="checkbox" id="fontSizeToggle" onchange="toggleFontSize()" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
-                </label>
-                <label class="flex items-center justify-between cursor-pointer">
-                    <span class="text-slate-300">إظهار أحدث المنشورات أولاً</span>
-                    <input type="checkbox" checked disabled class="rounded bg-slate-900 border-slate-700 text-amber-500">
-                </label>
-            </div>
+            <label class="flex items-center justify-between cursor-pointer">
+                <span class="text-slate-300">تكبير خط النصوص لتسهيل القراءة</span>
+                <input type="checkbox" id="fontSizeToggle" onchange="toggleFontSize()" class="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0">
+            </label>
         </div>
     </div>
 
     <!-- المحتوى الرئيسي -->
     <main class="container mx-auto p-4 max-w-3xl flex-grow">
         
-        <!-- زر الدخول للوحة التحكم للأساتذة -->
+        <!-- زر فتح لوحة التحكم للأساتذة -->
         <div class="flex justify-between items-center mb-6 bg-slate-900/80 backdrop-blur p-3 rounded-lg border border-slate-800 shadow">
             <span class="text-xs text-slate-300">خاص بالأساتذة المعتمدين للنشر:</span>
             <button onclick="toggleAdminPanel()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-4 py-1.5 rounded text-xs transition">
@@ -65,25 +58,27 @@
             </button>
         </div>
 
-        <!-- لوحة التحكم المحمية بالكود الجديد PROOF2026 -->
+        <!-- لوحة التحكم المحمية بكلمة السر (مخفية عن الزوار ودون ذكرها في الواجهة) -->
         <div id="adminPanel" class="hidden bg-slate-900/95 backdrop-blur p-4 rounded-xl border border-amber-500/50 mb-6 shadow-xl">
             <h2 class="text-lg font-bold text-amber-400 mb-3">لوحة نشر الأساتذة</h2>
+            
+            <!-- تبويب إدخال كلمة السر -->
             <div id="loginSection">
-                <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية (PROOF2026):</p>
+                <p class="text-xs text-slate-400 mb-2">أدخل كود الصلاحية للمتابعة:</p>
                 <div class="flex gap-2">
-                    <input type="password" id="adminCode" placeholder="أدخل الكود هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
+                    <input type="password" id="adminCode" placeholder="أدخل كود المرور..." class="bg-slate-950 border border-slate-700 rounded px-3 py-1.5 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
                     <button onclick="verifyCode()" class="bg-slate-700 hover:bg-slate-600 px-4 py-1.5 rounded text-sm text-white">دخول</button>
                 </div>
                 <p id="loginError" class="text-red-400 text-xs mt-2 hidden">الكود غير صحيح!</p>
             </div>
 
-            <!-- نموذج النشر ورفع الصور -->
+            <!-- نموذج النشر المباشر (يظهر حصرياً بعد إدخال كلمة السر الصحيحة) -->
             <div id="publishForm" class="hidden space-y-3 mt-3">
                 <input type="text" id="postTitle" placeholder="عنوان المقال أو الموضوع..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
                 <textarea id="postContent" rows="3" placeholder="اكتب المحتوى التاريخي هنا..." class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white"></textarea>
                 
                 <div>
-                    <label class="block text-xs text-slate-400 mb-1">اختر صورة من هاتفك (اختياري):</label>
+                    <label class="block text-xs text-slate-400 mb-1">اختر صورة من استوديو الهاتف:</label>
                     <input type="file" id="postImageFile" accept="image/*" class="bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm w-full text-slate-300 file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-600">
                 </div>
 
@@ -91,7 +86,7 @@
             </div>
         </div>
 
-        <!-- قسم عرض المنشورات للزوار -->
+        <!-- قسم عرض المنشورات -->
         <section>
             <h2 class="text-xl font-bold mb-4 border-b border-slate-800 pb-2 text-amber-400">أحدث المنشورات التاريخية</h2>
             <div id="postsContainer" class="space-y-4">
@@ -99,7 +94,7 @@
             </div>
         </section>
 
-        <!-- قسم تحميل التطبيق -->
+        <!-- تحميل التطبيق -->
         <div id="downloadSection" class="mt-12 bg-slate-900/90 backdrop-blur p-6 rounded-xl border border-slate-800 text-center shadow-xl">
             <h3 class="text-lg font-bold text-amber-400 mb-2">تحميل تطبيق منصة العصر العباسي</h3>
             <p class="text-xs text-slate-300 mb-4">استمتع بتجربة تصفح أسرع وأقوى عبر تطبيق الهاتف الرسمي الخاص بالموقع.</p>
@@ -114,11 +109,10 @@
         جميع الحقوق محفوظة &copy; 2026 - منصة العصر العباسي
     </footer>
 
-    <!-- سكربتات Firebase والتحكم بالتفضيلات -->
+    <!-- سكربتات Firebase والتحقق من كلمة السر البرمجية -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, query, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyD6mSK3BYoyicmQMsImx6bxs8ieWM_3dUM",
@@ -132,29 +126,21 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const storage = getStorage(app);
 
-        // إظهار وإخفاء لوحة الإدارة
         window.toggleAdminPanel = function() {
             document.getElementById('adminPanel').classList.toggle('hidden');
         }
 
-        // إظهار وإخفاء إعدادات المستخدم العادية
         window.toggleUserSettings = function() {
             document.getElementById('userSettingsPanel').classList.toggle('hidden');
         }
 
-        // تغيير حجم الخط كإعداد إضافي للمستخدم
         window.toggleFontSize = function() {
             const container = document.getElementById('postsContainer');
-            if (document.getElementById('fontSizeToggle').checked) {
-                container.style.fontSize = "1.1rem";
-            } else {
-                container.style.fontSize = "1rem";
-            }
+            container.style.fontSize = document.getElementById('fontSizeToggle').checked ? "1.1rem" : "1rem";
         }
 
-        // التحقق من كود الأستاذ الجديد PROOF2026
+        // التحقق من كلمة السر برمجياً (مخفية تماماً عن واجهة المستخدم)
         window.verifyCode = function() {
             const code = document.getElementById('adminCode').value;
             const errorMsg = document.getElementById('loginError');
@@ -167,7 +153,7 @@
             }
         }
 
-        // رفع المقال والصورة للسحاب
+        // دالة النشر المباشر مع اختيار الصورة من استوديو الهاتف
         window.publishPost = async function() {
             const title = document.getElementById('postTitle').value.trim();
             const content = document.getElementById('postContent').value.trim();
@@ -179,21 +165,25 @@
                 return;
             }
 
-            publishBtn.innerText = "جاري رفع الصورة والنشر...";
+            publishBtn.innerText = "جاري النشر...";
             publishBtn.disabled = true;
 
             try {
-                let imageUrl = "";
+                let imageData = "";
+
                 if (imageFile) {
-                    const storageRef = ref(storage, 'images/' + Date.now() + '_' + imageFile.name);
-                    const snapshot = await uploadBytes(storageRef, imageFile);
-                    imageUrl = await getDownloadURL(snapshot.ref);
+                    imageData = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = error => reject(error);
+                        reader.readAsDataURL(imageFile);
+                    });
                 }
 
                 await addDoc(collection(db, "posts"), {
                     title: title,
                     content: content,
-                    imageUrl: imageUrl,
+                    imageUrl: imageData,
                     createdAt: new Date()
                 });
 
@@ -204,14 +194,13 @@
                 document.getElementById('adminPanel').classList.add('hidden');
             } catch (e) {
                 console.error("خطأ أثناء النشر: ", e);
-                alert("حدث خطأ أثناء الرفع أو الاتصال بقاعدة البيانات.");
+                alert("حدث خطأ أثناء النشر. تأكد من اتصالك بالإنترنت.");
             } finally {
                 publishBtn.innerText = "نشر فوراً للجميع";
                 publishBtn.disabled = false;
             }
         }
 
-        // جلب المنشورات وعرضها لحظياً
         const q = query(collection(db, "posts"));
         onSnapshot(q, (snapshot) => {
             const container = document.getElementById('postsContainer');
