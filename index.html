@@ -71,7 +71,7 @@
             
             <!-- نموذج التحقق من الكود -->
             <div id="loginSection" class="space-y-2">
-                <p class="text-xs text-slate-400">يرجى إدخال كود المصادقة المعتمد للوصول إلى أدوات النشر:</p>
+                <p class="text-xs text-slate-400">يرجى إدخال كود المصادقة المعتمد للوصول إلى أدوات النشر والحذف:</p>
                 <div class="flex gap-2">
                     <input type="password" id="adminCode" placeholder="أدخل كود الصلاحية..." class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-amber-500 text-white">
                     <button onclick="verifyCode()" class="bg-slate-700 hover:bg-slate-600 px-5 py-2 rounded-lg text-sm text-white font-medium transition">تحقق</button>
@@ -175,6 +175,8 @@
                 document.getElementById('loginSection').classList.add('hidden');
                 document.getElementById('publishForm').classList.remove('hidden');
                 errorMsg.classList.add('hidden');
+                // إعادة تحميل عرض المقالات فوراً ليظهر زر الحذف تحتها
+                fetchPostsAndRender();
             } else {
                 errorMsg.classList.remove('hidden');
             }
@@ -243,10 +245,14 @@
             }
         }
 
-        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-        onSnapshot(q, (snapshot) => {
+        let latestSnapshot = null;
+
+        function fetchPostsAndRender() {
+            const snapshot = latestSnapshot;
             const container = document.getElementById('postsContainer');
             const countBadge = document.getElementById('postsCount');
+            if (!snapshot) return;
+
             container.innerHTML = '';
             countBadge.innerText = `${snapshot.size} مقال منشور`;
 
@@ -287,6 +293,12 @@
                 `;
                 container.appendChild(postCard);
             });
+        }
+
+        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+        onSnapshot(q, (snapshot) => {
+            latestSnapshot = snapshot;
+            fetchPostsAndRender();
         }, (error) => {
             console.error("خطأ في المراقبة اللحظية:", error);
             document.getElementById('postsContainer').innerHTML = `
