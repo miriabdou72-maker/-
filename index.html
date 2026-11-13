@@ -28,11 +28,9 @@
 
         body {
             background-color: var(--bg-primary);
-            /* خلفية بطابع تاريخي عباسي وصحراوي مع تظليل داكن للحفاظ على وضوح النصوص */
             background-image: 
                 linear-gradient(rgba(18, 15, 11, 0.85), rgba(18, 15, 11, 0.90)),
-                url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1920&q=80'),
-                url('https://images.unsplash.com/photo-1542382257-80dedb725088?auto=format&fit=crop&w=1920&q=80');
+                url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -42,7 +40,6 @@
             flex-direction: column;
         }
 
-        /* رأس الصفحة الطرازي */
         header {
             background: linear-gradient(to bottom, rgba(30, 24, 18, 0.96), rgba(18, 15, 11, 0.92));
             border-bottom: 2px solid var(--border-gold);
@@ -64,7 +61,6 @@
             font-size: 1.2rem;
         }
 
-        /* زر تثبيت التطبيق PWA */
         #installAppBtn {
             margin-top: 15px;
             background: linear-gradient(135deg, #f3e5ab, var(--accent-gold));
@@ -84,7 +80,6 @@
 
         #installAppBtn:hover {
             transform: scale(1.04);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
         }
 
         .container {
@@ -95,88 +90,52 @@
             width: 100%;
         }
 
-        /* شاشات المصادقة (تسجيل الدخول) */
-        .auth-box {
+        /* خانة إدخال كود الأساتذة الجانبية */
+        .teacher-access-box {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-gold);
-            border-radius: 12px;
-            padding: 30px;
-            max-width: 450px;
-            margin: 50px auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
             backdrop-filter: blur(6px);
         }
 
-        .auth-box h2 {
+        .teacher-access-box h3 {
             color: var(--accent-gold);
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
+        .teacher-access-box input {
+            padding: 10px;
+            width: 250px;
             background-color: rgba(18, 15, 11, 0.9);
             border: 1px solid var(--border-gold);
             border-radius: 6px;
             color: var(--text-main);
             font-size: 1rem;
+            text-align: center;
+            margin-left: 10px;
         }
 
         .btn {
             background: linear-gradient(135deg, var(--accent-gold), #aa8c2c);
             color: #120f0b;
             border: none;
-            padding: 12px;
-            width: 100%;
+            padding: 10px 20px;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: 0.3s;
         }
 
         .btn:hover {
             background: var(--accent-gold-light);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
-        /* لوحة التحكم الجانبية وبيانات المستخدم */
-        .dashboard-header {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-gold);
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-            backdrop-filter: blur(6px);
-        }
-
-        .user-credentials {
-            font-size: 1.1rem;
-        }
-
-        .user-credentials span {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        /* نموذج نشر محتوى جديد (خاص بالمدير الصلاحيات الكاملة) */
+        /* لوحة نشر الأساتذة (تظهر بالكود) */
         .publisher-section {
             background-color: var(--bg-secondary);
             border: 1px solid var(--border-gold);
@@ -204,7 +163,6 @@
             resize: vertical;
         }
 
-        /* تنسيق خانة رفع الصور */
         .image-upload-box {
             margin-bottom: 15px;
             padding: 12px;
@@ -217,14 +175,12 @@
             display: block;
             color: var(--accent-gold-light);
             margin-bottom: 8px;
-            font-size: 1.05rem;
             cursor: pointer;
         }
 
         .image-upload-box input[type="file"] {
             width: 100%;
             color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
         #imagePreviewContainer {
@@ -234,20 +190,19 @@
 
         #imagePreview {
             max-width: 100%;
-            max-height: 300px;
+            max-height: 250px;
             border-radius: 8px;
             border: 1px solid var(--border-gold);
             object-fit: contain;
         }
 
-        /* شبكة الشخصيات والتاريخ العباسي */
+        /* شبكة الشخصيات التاريخية */
         .section-title {
             color: var(--accent-gold);
             font-size: 1.8rem;
             border-bottom: 1px solid var(--border-gold);
             padding-bottom: 8px;
             margin-bottom: 25px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .cards-grid {
@@ -268,7 +223,6 @@
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent-gold-light);
         }
 
         .card img {
@@ -295,7 +249,7 @@
             line-height: 1.6;
         }
 
-        /* قسم المنشورات الديناميكية */
+        /* قسم المنشورات العامة للزوار */
         .posts-feed {
             display: flex;
             flex-direction: column;
@@ -308,7 +262,6 @@
             border: 1px dashed var(--border-gold);
             padding: 20px;
             border-radius: 8px;
-            backdrop-filter: blur(6px);
         }
 
         .post-item p {
@@ -319,8 +272,7 @@
 
         .post-uploaded-img {
             max-width: 100%;
-            height: auto;
-            max-height: 500px;
+            max-height: 400px;
             display: block;
             margin: 12px auto;
             border-radius: 8px;
@@ -335,7 +287,6 @@
             margin-top: 10px;
         }
 
-        /* ذيل الصفحة المخصص */
         footer {
             background-color: rgba(30, 24, 18, 0.96);
             border-top: 2px solid var(--border-gold);
@@ -361,217 +312,108 @@
     <header>
         <h1>ديوان العصر العباسي</h1>
         <p>نافذة على أزهى عصور المعرفة والحضارة الإسلامية</p>
-        <!-- زر تحميل الموقع كتطبيق -->
-        <button id="installAppBtn" class="hidden" onclick="installPWA()">📲 تحميل الديوان كتطبيق على جهازك</button>
+        <button id="installAppBtn" class="hidden" onclick="installPWA()">📲 تحميل الديوان كتطبيق</button>
     </header>
 
     <div class="container">
-        <!-- شاشة تسجيل الدخول -->
-        <div id="authScreen" class="auth-box">
-            <h2>دخول الديوان</h2>
-            <div class="form-group">
-                <label>البريد الإلكتروني:</label>
-                <input type="email" id="emailInput" placeholder="أدخل بريدك الإلكتروني..." required>
-            </div>
-            <div class="form-group">
-                <label>كلمة المرور:</label>
-                <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور..." required>
-            </div>
-            <button class="btn" onclick="handleLogin()">دخول بصلاحيات الإدارة الكاملة</button>
+        
+        <!-- خانة إدخال الكود الخاصة بالأساتذة -->
+        <div id="teacherLoginBox" class="teacher-access-box">
+            <h3>بوابة الأساتذة (للنشر والمشاركة)</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">أدخل كود الصلاحية المخصص للأساتذة لفتح لوحة النشر:</p>
+            <input type="password" id="teacherCodeInput" placeholder="أدخل الكود السري...">
+            <button class="btn" onclick="verifyTeacherCode()">دخول</button>
         </div>
 
-        <!-- المحتوى الرئيسي (يظهر بعد الدخول) -->
-        <div id="mainApp" class="hidden">
-            <!-- معلومات حساب المستخدم والتحكم -->
-            <div class="dashboard-header">
-                <div class="user-credentials">
-                    البريد المُسجّل: <span id="displayEmail"></span> | 
-                    كلمة المرور: <span id="displayPassword"></span>
+        <!-- لوحة النشر الخاصة بالأساتذة (مخفية افتراضياً ولا تظهر إلا بالكود) -->
+        <div id="publisherSection" class="publisher-section hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="margin: 0;">لوحة نشر الأساتذة المعتمدين</h3>
+                <button class="btn" style="background: #a93226; color: #fff; padding: 5px 12px; font-size: 0.9rem;" onclick="teacherLogout()">إغلاق اللوحة</button>
+            </div>
+            <textarea id="postContentInput" placeholder="اكتب المقال أو الإضاءة التاريخية هنا..."></textarea>
+            
+            <div class="image-upload-box">
+                <label for="postImageInput">🖼️ إرفاق صورة مع المنشور:</label>
+                <input type="file" id="postImageInput" accept="image/*" onchange="previewSelectedImage(event)">
+                <div id="imagePreviewContainer" class="hidden">
+                    <img id="imagePreview" src="" alt="معاينة الصورة">
                 </div>
-                <button class="btn" style="width: auto; padding: 8px 15px;" onclick="handleLogout()">تسجيل الخروج</button>
             </div>
 
-            <!-- أيقونة / أداة النشر (بصلاحيات الإدارة الكاملة) -->
-            <div class="publisher-section">
-                <h3>إضافة منشور أو مقال جديد في الديوان</h3>
-                <textarea id="postContentInput" placeholder="اكتب ما تحب أن تنشره في الموقع من فوائد أو أشعار أو إضاءات تاريخية..."></textarea>
-                
-                <!-- خانة رفع الصور بمختلف أحجامها -->
-                <div class="image-upload-box">
-                    <label for="postImageInput">🖼️ إرفاق صورة مع المنشور (يدعم جميع الأحجام والصيغ):</label>
-                    <input type="file" id="postImageInput" accept="image/*" onchange="previewSelectedImage(event)">
-                    <div id="imagePreviewContainer" class="hidden">
-                        <img id="imagePreview" src="" alt="معاينة الصورة">
-                    </div>
-                </div>
+            <button class="btn" onclick="publishTeacherContent()">نشر المحتوى للجميع</button>
+        </div>
 
-                <button class="btn" onclick="publishNewContent()">نشر المحتوى فوراً</button>
+        <!-- قسم المنشورات العامة (يراه كل الزوار) -->
+        <div id="dynamicFeedContainer" class="posts-feed hidden">
+            <h3 class="section-title">منشورات وإعلانات الأساتذة</h3>
+            <div id="postsList"></div>
+        </div>
+
+        <!-- الشخصيات التاريخية -->
+        <h3 class="section-title">أعلام العصر العباسي</h3>
+        <div class="cards-grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="هارون الرشيد">
+                <div class="card-content">
+                    <h4>الخليفة هارون الرشيد</h4>
+                    <p>خامس الخلفاء العباسيين، عهده ذهبي ازدهرت فيه التجارة والعلم وبنيت "بيت الحكمة".</p>
+                </div>
             </div>
-
-            <!-- عرض المنشورات الجديدة -->
-            <div id="dynamicFeedContainer" class="posts-feed hidden">
-                <h3 class="section-title">منشورات الديوان المُضافة</h3>
-                <div id="postsList"></div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="المأمون">
+                <div class="card-content">
+                    <h4>الخليفة المأمون بن الرشيد</h4>
+                    <p>راعي حركة الترجمة والعلم والفلك، وشهد عصره أوج الانفتاح المعرفي.</p>
+                </div>
             </div>
-
-            <!-- عرض عشر شخصيات في العصر العباسي بطابع عريق -->
-            <h3 class="section-title">أعلام وأعلام العصر العباسي (عشر شخصيات خلدها التاريخ)</h3>
-            <div class="cards-grid">
-                
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="هارون الرشيد">
-                    <div class="card-content">
-                        <h4>الخليفة هارون الرشيد</h4>
-                        <p>خامس الخلفاء العباسيين، عهدُه ذهبي ازدهرت فيه التجارة والعلم وبُنيت "بيت الحكمة".</p>
-                    </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="الجاحظ">
+                <div class="card-content">
+                    <h4>الأديب الجاحظ</h4>
+                    <p>أبو عثمان عمرو بن بحر، إمام الأدب وكاتب كتاب "الحيوان".</p>
                 </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="المأمون">
-                    <div class="card-content">
-                        <h4>الخليفة المأمون بن الرشيد</h4>
-                        <p>راعي حركة الترجمة والعلم والفلك، وشهد عصره أوج الانفتاح المعرفي والعقلي.</p>
-                    </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="الخوارزمي">
+                <div class="card-content">
+                    <h4>محمد بن موسى الخوارزمي</h4>
+                    <p>أبو الجبر ومؤسس علم الخوارزميات والرياضيات الحديثة.</p>
                 </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="الجاحظ">
-                    <div class="card-content">
-                        <h4>الأديب الجاحظ</h4>
-                        <p>أبو عثمان عمرو بن بحر، إمام الأدب وكاتب كتاب "الحيوان" و"البخلاء".</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="الخوارزمي">
-                    <div class="card-content">
-                        <h4>محمد بن موسى الخوارزمي</h4>
-                        <p>أبو الجبر ومؤسس علم الخوارزميات والرياضيات الحديثة في بغداد العباسية.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="أبو الطيب المتنبي">
-                    <div class="card-content">
-                        <h4>الشاعر أبو الطيب المتنبي</h4>
-                        <p>ملء الساعات وشاعر العرب الأكبر، صاحب أسمى قصائد الفخر والحكمة.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="ابن سينا">
-                    <div class="card-content">
-                        <h4>الشيخ الرئيس ابن سينا</h4>
-                        <p>طبيب وفيلسوف العصر العباسي، صاحب كتاب "القانون في الطب".</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="أبو نصر الفارابي">
-                    <div class="card-content">
-                        <h4>الفيلسوف الفارابي</h4>
-                        <p>المعلم الثاني، وضع أسس الفلسفة الإسلامية وعلم الموسيقى والمنطق.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80" alt="أبو حامد الغزالي">
-                    <div class="card-content">
-                        <h4>حجة الإسلام الغزالي</h4>
-                        <p>الفقيه والفيلسوف والأصولي الكبير، أحد أعظم أعلام الفكر الإسلامي.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80" alt="ابن خلدون">
-                    <div class="card-content">
-                        <h4>العلامة ابن خلدون</h4>
-                        <p>مؤسس علم الاجتماع الحديث وصاحب المقدمة التاريخية الشهيرة.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1471107340929-a87cb0f2b2f9?auto=format&fit=crop&w=600&q=80" alt="أبو العتاهية">
-                    <div class="card-content">
-                        <h4>الشاعر أبو العتاهية</h4>
-                        <p>شاعر الزهد والحكمة، تميزت أشعاره بالبساطة والعمق الروحي المؤثر.</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
-    <!-- تذييل الصفحة مع اسم المطور وصاحب الموقع -->
     <footer>
         <p>جميع الحقوق محفوظة © 2026 | صاحب الموقع والمنشئ: <span>عبد الله ميري</span></p>
     </footer>
 
     <script>
-        // ==========================================
-        // 1. خوارزمية تحويل الموقع إلى تطبيق قابل للتثبيت (PWA)
-        // ==========================================
-        let deferredPrompt;
+        // الكود السري المخصص للأساتذة (يمكنك تغييره هنا لأي كلمة تريدها)
+        const SECRET_TEACHER_CODE = "abbasid2026";
 
-        // إنشاء ملف Manifest ديناميكي ليتمكن المتصفح من تثبيت الموقع كتطبيق مستقل
-        const manifestData = {
-            name: "ديوان العصر العباسي",
-            short_name: "ديوان العباسي",
-            description: "نافذة على أزهى عصور المعرفة والحضارة الإسلامية",
-            start_url: window.location.href,
-            display: "standalone",
-            background_color: "#120f0b",
-            theme_color: "#d4af37",
-            icons: [
-                {
-                    src: "https://cdn-icons-png.flaticon.com/512/2232/2232688.png",
-                    sizes: "512x512",
-                    type: "image/png"
-                }
-            ]
-        };
-
-        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/manifest+json' });
-        const manifestURL = URL.createObjectURL(manifestBlob);
-        const linkEl = document.createElement('link');
-        linkEl.rel = 'manifest';
-        linkEl.href = manifestURL;
-        document.head.appendChild(linkEl);
-
-        // تسجيل Service Worker مدمج لتفعيل ميزة التثبيت
-        if ('serviceWorker' in navigator) {
-            const swCode = `
-                self.addEventListener('install', (e) => self.skipWaiting());
-                self.addEventListener('fetch', (e) => {});
-            `;
-            const swBlob = new Blob([swCode], { type: 'application/javascript' });
-            const swUrl = URL.createObjectURL(swBlob);
-            navigator.serviceWorker.register(swUrl).catch(() => {});
-        }
-
-        // التقاط حدث جاهزية التثبيت وإظهار الزر للمستخدم
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installAppBtn').classList.remove('hidden');
-        });
-
-        async function installPWA() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    document.getElementById('installAppBtn').classList.add('hidden');
-                }
-                deferredPrompt = null;
+        function verifyTeacherCode() {
+            const enteredCode = document.getElementById('teacherCodeInput').value.trim();
+            if (enteredCode === SECRET_TEACHER_CODE) {
+                localStorage.setItem('teacher_logged', 'true');
+                showTeacherPanel();
             } else {
-                alert('لتثبيت الموقع كتطبيق: اضغط على قائمة المتصفح (⋮ أو زر المشاركة) ثم اختر "إضافة إلى الشاشة الرئيسية" أو "تثبيت التطبيق".');
+                alert('الكود غير صحيح! يرجى التأكد من الكود المخصص للأساتذة.');
             }
         }
 
-        // ==========================================
-        // 2. خوارزمية معالجة ورفع الصور بمختلف أحجامها
-        // ==========================================
+        function showTeacherPanel() {
+            document.getElementById('teacherLoginBox').classList.add('hidden');
+            document.getElementById('publisherSection').classList.remove('hidden');
+        }
+
+        function teacherLogout() {
+            localStorage.removeItem('teacher_logged');
+            document.getElementById('publisherSection').classList.add('hidden');
+            document.getElementById('teacherLoginBox').classList.remove('hidden');
+            document.getElementById('teacherCodeInput').value = '';
+        }
+
         let currentUploadedImageBase64 = null;
 
         function previewSelectedImage(event) {
@@ -586,13 +428,10 @@
             reader.onload = function(e) {
                 const img = new Image();
                 img.onload = function() {
-                    // الحفاظ على الأبعاد الأصلية للصورة مع ضبط الجودة لضمان حفظها في المتصفح مهما كان حجمها كبيراً
                     const canvas = document.createElement('canvas');
                     let width = img.width;
                     let height = img.height;
-
-                    // إذا كانت الصورة ضخمة جداً (أكبر من 1600 بكسل) نضبطها بذكاء مع الحفاظ على نسبة العرض والارتفاع
-                    const maxDim = 1600;
+                    const maxDim = 1200;
                     if (width > maxDim || height > maxDim) {
                         if (width > height) {
                             height = Math.round((height * maxDim) / width);
@@ -602,7 +441,6 @@
                             height = maxDim;
                         }
                     }
-
                     canvas.width = width;
                     canvas.height = height;
                     const ctx = canvas.getContext('2d');
@@ -617,72 +455,33 @@
             reader.readAsDataURL(file);
         }
 
-        // ==========================================
-        // 3. خوارزمية وحركات التشغيل والتخزين المحلي
-        // ==========================================
-        function handleLogin() {
-            const email = document.getElementById('emailInput').value.trim();
-            const password = document.getElementById('passwordInput').value.trim();
-
-            if (!email || !password) {
-                alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور للمتابعة.');
-                return;
-            }
-
-            localStorage.setItem('abbid_user_email', email);
-            localStorage.setItem('abbid_user_pass', password);
-
-            showAppInterface(email, password);
-        }
-
-        function showAppInterface(email, password) {
-            document.getElementById('authScreen').classList.add('hidden');
-            document.getElementById('mainApp').classList.remove('hidden');
-            
-            document.getElementById('displayEmail').innerText = email;
-            document.getElementById('displayPassword').innerText = password;
-
-            loadSavedPosts();
-        }
-
-        function handleLogout() {
-            localStorage.removeItem('abbid_user_email');
-            localStorage.removeItem('abbid_user_pass');
-            location.reload();
-        }
-
-        function publishNewContent() {
+        function publishTeacherContent() {
             const content = document.getElementById('postContentInput').value.trim();
             if (!content && !currentUploadedImageBase64) {
-                alert('الرجاء كتابة نص النشر أو اختيار صورة أولاً.');
+                alert('الرجاء كتابة محتوى أو إرفاق صورة أولاً.');
                 return;
             }
 
-            let posts = JSON.parse(localStorage.getItem('abbid_posts') || '[]');
+            let posts = JSON.parse(localStorage.getItem('abbid_posts_teachers') || '[]');
             posts.unshift({
                 text: content,
                 image: currentUploadedImageBase64,
                 date: new Date().toLocaleDateString('ar-DZ')
             });
 
-            try {
-                localStorage.setItem('abbid_posts', JSON.stringify(posts));
-            } catch (err) {
-                alert('مساحة التخزين ممتلئة بسبب حجم الصور الكبير، يرجى حذف بعض المنشورات القديمة.');
-                return;
-            }
+            localStorage.setItem('abbid_posts_teachers', JSON.stringify(posts));
 
-            // إعادة تعيين الحقول بعد النشر
             document.getElementById('postContentInput').value = '';
             document.getElementById('postImageInput').value = '';
             document.getElementById('imagePreviewContainer').classList.add('hidden');
             currentUploadedImageBase64 = null;
 
-            loadSavedPosts();
+            loadTeacherPosts();
+            alert('تم نشر المحتوى بنجاح ليظهر لجميع الزوار!');
         }
 
-        function loadSavedPosts() {
-            let posts = JSON.parse(localStorage.getItem('abbid_posts') || '[]');
+        function loadTeacherPosts() {
+            let posts = JSON.parse(localStorage.getItem('abbid_posts_teachers') || '[]');
             const container = document.getElementById('dynamicFeedContainer');
             const list = document.getElementById('postsList');
 
@@ -692,7 +491,7 @@
                     <div class="post-item">
                         ${p.text ? `<p>${p.text}</p>` : ''}
                         ${p.image ? `<img src="${p.image}" class="post-uploaded-img" alt="صورة مرفقة">` : ''}
-                        <div class="post-author">تاريخ النشر: ${p.date} — نُشر بواسطة صاحب الموقع: <strong>عبد الله ميري</strong></div>
+                        <div class="post-author">تاريخ النشر: ${p.date} — نشر بواسطة: <strong>أستاذ معتمد</strong></div>
                     </div>
                 `).join('');
             } else {
@@ -700,13 +499,30 @@
             }
         }
 
-        // التحقق التلقائي إذا كان المستخدم مسجلاً مسبقاً
-        window.onload = function() {
-            const savedEmail = localStorage.getItem('abbid_user_email');
-            const savedPass = localStorage.getItem('abbid_user_pass');
-            if (savedEmail && savedPass) {
-                showAppInterface(savedEmail, savedPass);
+        // PWA Setup
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installAppBtn').classList.remove('hidden');
+        });
+
+        async function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    document.getElementById('installAppBtn').classList.add('hidden');
+                }
+                deferredPrompt = null;
             }
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem('teacher_logged') === 'true') {
+                showTeacherPanel();
+            }
+            loadTeacherPosts();
         };
     </script>
 </body>
